@@ -4,9 +4,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InvoiceformComponent } from './components/invoiceform/invoiceform.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { VendermasterComponent } from './components/vendermaster/vendermaster.component';
-import { CompanymasterComponent } from './components/companymaster/companymaster.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
-
+import { InvoicemasterComponent } from './components/invoicemaster/invoicemaster.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -19,9 +18,8 @@ const routes: Routes = [
           { path: '', component: VendermasterComponent },
           { path: 'invoiceform', component: InvoiceformComponent },
           // { path: 'lead/:method/:id', component: InvoiceformComponent },
-          { path: 'companymaster', component: CompanymasterComponent },
-          { path: 'invoicemaster', component: InvoiceComponent },
-          // { path: 'viewemployee/:id', component:  },
+          { path: 'invoicemaster', component: InvoicemasterComponent },
+          { path: 'invoice', component: InvoiceComponent },
         ]
       },
     ]

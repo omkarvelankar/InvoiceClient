@@ -13,7 +13,7 @@ import { InvoiceformComponent } from './components/invoiceform/invoiceform.compo
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { VendermasterComponent } from './components/vendermaster/vendermaster.component';
-import { CompanymasterComponent } from './components/companymaster/companymaster.component';
+import { InvoicemasterComponent } from './components/invoicemaster/invoicemaster.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { CompanymasterComponent } from './components/companymaster/companymaster
     NavigationComponent,
     InvoiceComponent,
     VendermasterComponent,
-    CompanymasterComponent
+    InvoicemasterComponent
   ],
   imports: [
     BrowserModule,

@@ -21,13 +21,13 @@ export class NavigationComponent implements OnInit {
         index: 0
       },
       {     
-        label: 'Company Master',
-        link: './companymaster',
+        label: 'Invoice Master',
+        link: './invoicemaster',
         index: 1
       },
       {     
-        label: 'Invoice Master',
-        link: './invoicemaster',
+        label: 'Invoice',
+        link: './invoice',
         index: 2
       },
     ];

@@ -13,13 +13,12 @@ const ELEMENT_DATA: CompanyData[] = [
   {id: 1560608787815, name: 'Robotic Process Automation'},
   {id: 1560608805101, name: 'Blockchain'}
 ];
-
 @Component({
-  selector: 'app-companymaster',
-  templateUrl: './companymaster.component.html',
-  styleUrls: ['./companymaster.component.scss']
+  selector: 'app-invoicemaster',
+  templateUrl: './invoicemaster.component.html',
+  styleUrls: ['./invoicemaster.component.scss']
 })
-export class CompanymasterComponent implements OnInit {
+export class InvoicemasterComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'action'];
   dataSource = ELEMENT_DATA;
@@ -72,4 +71,3 @@ export class CompanymasterComponent implements OnInit {
   }
 
 }
-
