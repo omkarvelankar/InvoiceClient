@@ -35,24 +35,29 @@ export class InvoiceService {
   return headers;
 }
 
-getAllProduct(): Observable<any>{                                
-return this.httpClient.get(environment.getAllProduct, {headers: this.GetHttpHeaders()});
+
+addNewInvoice(param: any): Observable<any> {
+  return this.httpClient.post( environment.addNewInvoice, param, { headers: this.GetHttpHeaders() });
+  }
+
+getAllInvoice(): Observable<any>{                                
+return this.httpClient.get(environment.getAllInvoice, {headers: this.GetHttpHeaders()});
 }
 
-addNewProduct(param: any): Observable<any> {
-return this.httpClient.post( environment.addNewProduct, param, { headers: this.GetHttpHeaders() });
+getAllVender(): Observable<any>{                                
+  return this.httpClient.get(environment.getAllVender, {headers: this.GetHttpHeaders()});
+  }
+
+getVenderById(id): Observable<any> {
+return this.httpClient.get(environment.getVenderById + '/' + id, { headers: this.GetHttpHeaders() });
 }
 
-getProductById(id): Observable<any> {
-return this.httpClient.get(environment.getProductById + '/' + id, { headers: this.GetHttpHeaders() });
+updateVenderById(param: any): Observable<any> {
+return this.httpClient.post(environment.updateVenderById, param, { headers: this.GetHttpHeaders() });
 }
 
-updateProductById(param: any): Observable<any> {
-return this.httpClient.post(environment.updateProductById, param, { headers: this.GetHttpHeaders() });
-}
-
-deleteProductById(param: any): Observable<any> {
-return this.httpClient.put(environment.deleteProductById, param, { headers: this.GetHttpHeaders() });
+DeleteVenderById(param: any): Observable<any> {
+return this.httpClient.put(environment.DeleteVenderById, param, { headers: this.GetHttpHeaders() });
 }
 
 }

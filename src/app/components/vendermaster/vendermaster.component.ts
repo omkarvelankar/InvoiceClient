@@ -1,46 +1,70 @@
 import {HttpClient} from '@angular/common/http';
-import {Component, ViewChild, AfterViewInit} from '@angular/core';
+import {SelectionModel} from '@angular/cdk/collections';
+import {Component, ViewChild, AfterViewInit, OnInit} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material';
 import { InvoiceService } from 'src/app/services/invoice.service';
-
+ 
 export interface PeriodicElement {
-  id: number;
-  name: string;
-  dateOfBirth: Date;
-  address: string;
+  vendername: string;
+  email: number;
+  phno: number;
+  panno: string;
+  gstno: string,
+  address:string
 }
-
 
 @Component({
   selector: 'app-vendermaster',
   templateUrl: './vendermaster.component.html',
   styleUrls: ['./vendermaster.component.scss']
 })
-export class VendermasterComponent implements AfterViewInit {
+export class VendermasterComponent implements OnInit {
 
   ELEMENT_DATA: any=[]=[];
   dataSource = new MatTableDataSource();
-  public displayedColumns: string[] = ['id', 'name','dateOfBirth', 'address','action'];
-
+  public displayedColumns: string[] = ['id','vendername','email', 'phno','panno','gstno','address','action'];
+  selection = new SelectionModel<PeriodicElement>(true, []);
+  
   @ViewChild(MatPaginator, {static:true }) paginator: MatPaginator;
   @ViewChild(MatSort, {static:true}) sort: MatSort;
 
   constructor(private invoiceService: InvoiceService) {
     this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
+    
     }
   
-    ngOnInit() {
-      this.ELEMENT_DATA = this.invoiceService.getAdmissionDetails();
-      this.dataSource=this.ELEMENT_DATA;
-     
-    }
-  
-    ngAfterViewInit(){
+     /**
+  * @author Amol Dhamale
+  * getAllVender() to get the Vender Details.
+  */
+ getAllVender() {
+  this.invoiceService.getAllVender().subscribe(res => {
+    if (!res.error) {
+      this.ELEMENT_DATA = res.result;
+      console.log(this.ELEMENT_DATA);
+      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }
+  }, error => {
+    console.log("API error", error);
+  });
+}
+
+    ngOnInit() {
+      this.getAllVender();
+      // this.ELEMENT_DATA = this.invoiceService.getAdmissionDetails();
+      // this.invoiceService.getAllVender().subscribe();
+      // this.dataSource=this.ELEMENT_DATA;
+     
+    }
+  
+    // ngAfterViewInit(){
+    //   this.dataSource.paginator = this.paginator;
+    //   this.dataSource.sort = this.sort;
+    // }
   
     applyFilter(filterValue: string) {
       this.dataSource.filter = filterValue.trim().toLowerCase();

@@ -1,5 +1,5 @@
 <!-- Toolbar -->
-<mat-toolbar color="primary" class="header">
+<mat-toolbar class="header">
     <div>Logipool Infotech</div>
     <span class="nav-tool-items">
         <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon>
@@ -8,12 +8,12 @@
 
 <mat-sidenav-container>
     <!-- Sidenav -->
-    <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
+    <mat-sidenav  #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
         [fixedTopGap]>
         <mat-nav-list>
-            <div>
+            <!-- <div>
                 <p>www.logipool.in</p>
-            </div>
+            </div> -->
             <a mat-list-item routerLinkActive="active"  routerLink="/addemployee">
                 <mat-icon >add</mat-icon> Add Vender
             </a>

@@ -4,22 +4,23 @@ table {
     overflow-y: hidden;
     min-width: 500px;
 }
- 
+
 th.mat-header-cell {
     text-align: left;
     max-width: 300px;
-    background-color: chocolate;
-    font-size: 25px;
+    // background-color: chocolate;
+    background-color: rgba(135, 207, 235, 0.322);
+    font-size: 15px;
 }
 
 .example-container {
     position: relative;
-    min-height: 200px;
+    max-height: 410px;
   }
   
   .example-table-container {
     position: relative;
-    max-height: 400px;
+    max-height: 270px;
     overflow: auto;
   }
 
@@ -42,9 +43,9 @@ th.mat-header-cell {
     text-align: center;
   }
   
-  /* Column Widths */
-//   .mat-column-number,
-//   .mat-column-state {
-//     max-width: 64px;
+ /* Column Widths */
+//  .mat-column-number,
+//  .mat-column-state {
+//  max-width: 100px;
 //   }
   
