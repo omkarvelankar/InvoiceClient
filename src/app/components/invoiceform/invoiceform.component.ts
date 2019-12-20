@@ -16,14 +16,14 @@ export class InvoiceformComponent implements OnInit {
 
   invoiceForm: any = {
     id: null,
-    vendername: null,
+    venderid: null,
+    vendorname: null,
     email: null,
     phno: null,
     panno: null,
     gstno: null,
+    address: null,
 
-    issuedate: null,
-    duedate: null,
     item: null,
     price: null,
     qty: null,
@@ -31,7 +31,11 @@ export class InvoiceformComponent implements OnInit {
     amount: null,
     sgst: null,
     cgst: null,
-    paid: null,
+    amttax: null,
+    paymthd: null,
+    issuedate: null,
+    duedate: null,
+    paid: null
   }
 
   VenderName = new FormControl([Validators.required]);
