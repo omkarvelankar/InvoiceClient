@@ -1,18 +1,10 @@
-import { Component, OnInit ,ViewChild} from '@angular/core'; 
-import { MatDialog, MatTable } from '@angular/material';
-import { InvoiceformComponent } from '../invoiceform/invoiceform.component';
+import {SelectionModel} from '@angular/cdk/collections';
+import {Component, ViewChild, AfterViewInit, OnInit} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material';
+import { InvoiceService } from 'src/app/services/invoice.service';
 
-export interface CompanyData {
-  id: number;
-  name: string;
-}
- 
-const ELEMENT_DATA: CompanyData[] = [
-  {id: 1560608769632, name: 'Artificial Intelligence'},
-  {id: 1560608796014, name: 'Machine Learning'},
-  {id: 1560608787815, name: 'Robotic Process Automation'},
-  {id: 1560608805101, name: 'Blockchain'}
-];
 @Component({
   selector: 'app-invoicemaster',
   templateUrl: './invoicemaster.component.html',
@@ -20,54 +12,60 @@ const ELEMENT_DATA: CompanyData[] = [
 })
 export class InvoicemasterComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'action'];
-  dataSource = ELEMENT_DATA;
  
-  @ViewChild(MatTable,{static:true}) table: MatTable<any>;
-  constructor(public dialog: MatDialog) {}
+  ELEMENT_DATA: any=[]=[];
+  dataSource = new MatTableDataSource();
 
-  openDialog(action,obj) {
-    obj.action = action;
-    const dialogRef = this.dialog.open(InvoiceformComponent, {
-      width: '250px',
-      data:obj
-    });
- 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result.event == 'Add'){
-        this.addRowData(result.data);
-      }else if(result.event == 'Update'){
-        this.updateRowData(result.data);
-      }else if(result.event == 'Delete'){
-        this.deleteRowData(result.data);
-      }
-    });
-  }
- 
-  addRowData(row_obj){
-    var d = new Date();
-    this.dataSource.push({
-      id:d.getTime(),
-      name:row_obj.name
-    });
-    this.table.renderRows();
+  public displayedColumns: string[] = ['item','description','price','qty', 'discount','amount','sgst','cgst','amttax','paymthd', 'issuedate','duedate','paid'];
+  @ViewChild(MatPaginator, {static:true }) paginator: MatPaginator;
+  @ViewChild(MatSort, {static:true}) sort: MatSort;
+
+  constructor(private invoiceService: InvoiceService) {
+    this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
     
-  }
-  updateRowData(row_obj){
-    this.dataSource = this.dataSource.filter((value,key)=>{
-      if(value.id == row_obj.id){
-        value.name = row_obj.name;
-      }
-      return true;
-    });
-  }
-  deleteRowData(row_obj){
-    this.dataSource = this.dataSource.filter((value,key)=>{
-      return value.id != row_obj.id;
-    });
-  }
- 
-  ngOnInit() {
-  }
-
+    }
+  
+     /**
+  * @author Amol Dhamale
+  * getAllInvoice() to get the Vender Details.
+  */
+ getAllInvoice() {
+  this.invoiceService.getAllInvoice().subscribe(res => {
+    if (!res.error) {
+      this.ELEMENT_DATA = res.result;
+      console.log(this.ELEMENT_DATA);
+      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+      console.log(this.dataSource);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
+  }, error => {
+    console.log("API error", error);
+  });
 }
+
+    ngOnInit() {
+      this.getAllInvoice(); 
+    }
+  
+    applyFilter(filterValue: string) {
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
+    }
+    public redirectToDetails = (id: string) => {
+      
+    }
+   
+    public redirectToUpdate = (id: string) => {
+      
+    }
+   
+    public redirectToDelete = (id: string) => {
+      
+    }
+  
+  }
+  
+

@@ -6,15 +6,6 @@ import {MatSort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material';
 import { InvoiceService } from 'src/app/services/invoice.service';
  
-export interface PeriodicElement {
-  vendername: string;
-  email: number;
-  phno: number;
-  panno: string;
-  gstno: string,
-  address:string
-}
-
 @Component({
   selector: 'app-vendermaster',
   templateUrl: './vendermaster.component.html',
@@ -25,8 +16,6 @@ export class VendermasterComponent implements OnInit {
   ELEMENT_DATA: any=[]=[];
   dataSource = new MatTableDataSource();
   public displayedColumns: string[] = ['id','vendername','email', 'phno','panno','gstno','address','action'];
-  selection = new SelectionModel<PeriodicElement>(true, []);
-  
   @ViewChild(MatPaginator, {static:true }) paginator: MatPaginator;
   @ViewChild(MatSort, {static:true}) sort: MatSort;
 
@@ -54,17 +43,8 @@ export class VendermasterComponent implements OnInit {
 }
 
     ngOnInit() {
-      this.getAllVender();
-      // this.ELEMENT_DATA = this.invoiceService.getAdmissionDetails();
-      // this.invoiceService.getAllVender().subscribe();
-      // this.dataSource=this.ELEMENT_DATA;
-     
+      this.getAllVender(); 
     }
-  
-    // ngAfterViewInit(){
-    //   this.dataSource.paginator = this.paginator;
-    //   this.dataSource.sort = this.sort;
-    // }
   
     applyFilter(filterValue: string) {
       this.dataSource.filter = filterValue.trim().toLowerCase();
