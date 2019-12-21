@@ -1,9 +1,5 @@
 <div>
     <form>
-        <div fxLayout="row">
-            
-        </div>
-
 
         <div fxLayout="row">
             
@@ -99,56 +95,32 @@
 
 
 
+            </mat-error>
+        </mat-form-field>
+
         <mat-form-field>
-            <input matInput placeholder="Issue Date" [(ngModel)]="invoiceForm.issuedate" [formControl]="IssueDate"
-                required>
+
+
+        <mat-form-field>
+            <input matInput placeholder="Issue Date"  [(ngModel)]="invoiceForm.issueDate" [formControl]="IssueDate" required>
             <mat-error *ngIf="IssueDate.hasError('required')">
-                Date Of Birth is required.
+                Issue Date is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="Due Date" [(ngModel)]="invoiceForm.duedate" [formControl]="DueDate" required>
+            <input matInput placeholder="Due Date"  [(ngModel)]="invoiceForm.dueDate" [formControl]="DueDate" required>
             <mat-error *ngIf="DueDate.hasError('required')">
-                Date Of Birth is required.
+                Due Date is required.
             </mat-error>
         </mat-form-field>
 
-
-
-        <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px"
-            fxLayoutGap.md="0" >
-            <div class="item item-1" fxFlex="15%">
-                <mat-form-field>
-                    <input matInput placeholder="Vendor name" [(ngModel)]="invoiceForm.vendername"
-                        [formControl]="VenderName" required>
-                    <mat-label>Client Name</mat-label>
-                    <mat-icon matSuffix>perm_identity</mat-icon>
-                    <mat-error *ngIf="VenderName.hasError('required')">
-                        Name is Required.
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="item item-2" fxFlex="15%"><mat-form-field>
-                <input matInput placeholder="Client contact" [(ngModel)]="invoiceForm.phno" [formControl]="PhNo"
-                    required>
-                <mat-error *ngIf="PhNo.hasError('required')">
-                    Mobile Number is required.
-                </mat-error>
-            </mat-form-field></div>
-            <div class="item item-3" fxFlex>Item 3</div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
+        <mat-form-field>
+            <input matInput placeholder="Paid"  [(ngModel)]="invoiceForm.paid" [formControl]="Paid" required>
+            <mat-error *ngIf="Paid.hasError('required')">
+                Paid is required.
+            </mat-error>
+        </mat-form-field>
         <div>
             <button mat-raised-button mat-primary (click)="submit()">{{method=='edit'?'Update':'Create'}}</button>
         </div>

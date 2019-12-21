@@ -25,6 +25,7 @@ export class InvoiceformComponent implements OnInit {
     address: null,
 
     item: null,
+    description: null,
     price: null,
     qty: null,
     discount: null,
@@ -37,15 +38,15 @@ export class InvoiceformComponent implements OnInit {
     duedate: null,
     paid: null
   }
-  
+
     // VenderName: null,
     // Email: null,
     // Phno: null,
     // Panno: null,
     // Gstno: null,
     // Address: null,
-
     // Item: null,
+    // Description,
     // price: null,
     // qty: null,
     // discount: null,
@@ -63,15 +64,20 @@ export class InvoiceformComponent implements OnInit {
   PhNo = new FormControl([Validators.required]);
   PanNo = new FormControl([Validators.required]);
   GstNo = new FormControl([Validators.required]);
-  IssueDate = new FormControl([Validators.required]);
-  DueDate = new FormControl([Validators.required]);
+  Address = new FormControl([Validators.required]);
+
   Item = new FormControl([Validators.required]);
+  Description = new FormControl([Validators.required]);
   Price = new FormControl([Validators.required]);
   Qty = new FormControl([Validators.required]);
   Discount = new FormControl([Validators.required]);
   Amount = new FormControl([Validators.required]);
   Sgst = new FormControl([Validators.required]);
   Cgst = new FormControl([Validators.required]);
+  Amttax = new FormControl([Validators.required]);
+  Paymthd = new FormControl([Validators.required]);
+  IssueDate = new FormControl([Validators.required]);
+  DueDate = new FormControl([Validators.required]);
   Paid = new FormControl([Validators.required]);
 
   constructor(private router: Router, private activateRoute: ActivatedRoute, private invoiceService: InvoiceService, private location: Location) {
@@ -101,11 +107,10 @@ getVenderById(id) {
     }, error => {
       console.log("API Error")
     });
-  }
-
+  } 
   submit() {
-    if (this.VenderName.valid && this.Email.valid && this.PhNo.valid && this.PanNo.valid && this.GstNo.valid && this.IssueDate.valid && this.DueDate.valid && this.Item.valid
-      && this.Price.valid && this.Qty.valid && this.Discount.valid && this.Amount.valid && this.Sgst.valid && this.Cgst.valid && this.Paid.valid) {
+    if (this.VenderName.valid && this.Email.valid && this.PhNo.valid && this.PanNo.valid && this.GstNo.valid && this.Address.valid && this.Item.valid && this.Description.valid
+      && this.Price.valid && this.Qty.valid && this.Discount.valid && this.Amount.valid && this.Sgst.valid && this.Cgst.valid && this.Amttax.valid && this.Paymthd.valid,this.IssueDate.valid,this.DueDate.valid, this.Paid.valid) {
       if (this.method == 'edit') {
         //update API
         this.invoiceService.updateVenderById(this.invoiceForm).subscribe(res => {
