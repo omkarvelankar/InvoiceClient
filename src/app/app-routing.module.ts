@@ -16,10 +16,10 @@ const routes: Routes = [
         path: '', component: NavigationComponent,
         children: [
           { path: '', component: VendermasterComponent },
-          { path: 'invoiceform', component: InvoiceformComponent },
-          // { path: 'lead/:method/:id', component: InvoiceformComponent },
+          { path: 'invoiceform/:method', component: InvoiceformComponent },
+          { path: 'invoiceform/:method/:id', component: InvoiceformComponent },
           { path: 'invoicemaster', component: InvoicemasterComponent },
-          { path: 'invoice', component: InvoiceComponent },
+          { path: 'invoice/:id', component: InvoiceComponent },
         ]
       },
     ]

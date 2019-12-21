@@ -1,18 +1,18 @@
 <div >
     <form>
         <mat-form-field>
-            <input matInput placeholder="employee name" [(ngModel)]="invoiceForm.vendername" [formControl]="VenderName" required>
-            <mat-label>Employee Name</mat-label>
+            <input matInput placeholder="Vendor name" [(ngModel)]="invoiceForm.vendername" [formControl]="VenderName" required>
+            <mat-label>Vendor Name</mat-label>
             <mat-icon matSuffix>perm_identity</mat-icon>
             <mat-error *ngIf="VenderName.hasError('required')">
-                Name is required.
+                Vendor is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput type="email" placeholder="employee email" [(ngModel)]="invoiceForm.email" [formControl]="Email" required>
+            <input matInput type="email" placeholder="Vendor Email" [(ngModel)]="invoiceForm.email" [formControl]="Email" required>
             <mat-error *ngIf="Email.hasError('required')">
-                Email is required.
+               Vendor Email is required.
             </mat-error>
         </mat-form-field>
 
@@ -26,80 +26,107 @@
         <mat-form-field>
             <input matInput placeholder="employee gender" [(ngModel)]="invoiceForm.gstno"  [formControl]="GstNo" required>
             <mat-error *ngIf="GstNo.hasError('required')">
-                Gender is required.
+                Gst number is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="employee date of birth" [(ngModel)]="invoiceForm.issuedate"  [formControl]="IssueDate" required>
-            <mat-error *ngIf="IssueDate.hasError('required')">
-                Date Of Birth is required.
+            <input matInput placeholder="Address" [(ngModel)]="invoiceForm.address"  [formControl]="Address" required>
+            <mat-error *ngIf="Address.hasError('required')">
+                Address is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="employee date of birth" [(ngModel)]="invoiceForm.duedate"  [formControl]="DueDate" required>
-            <mat-error *ngIf="DueDate.hasError('required')">
-                Date Of Birth is required.
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput placeholder="employee date of birth" [(ngModel)]="invoiceForm.item"  [formControl]="Item" required>
+            <input matInput placeholder="Item" [(ngModel)]="invoiceForm.item"  [formControl]="Item" required>
             <mat-error *ngIf="Item.hasError('required')">
-                Date Of Birth is required.
+                Item is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="employee designation" [(ngModel)]="invoiceForm.price"  [formControl]="Price" required>
+            <input matInput placeholder="Description" [(ngModel)]="invoiceForm.description"  [formControl]="Description" required>
+            <mat-error *ngIf="Description.hasError('required')">
+                Description is required.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Price" [(ngModel)]="invoiceForm.price"  [formControl]="Price" required>
             <mat-error *ngIf="Price.hasError('required')">
-                Designation is required.
+                Price is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="employee salary" [(ngModel)]="invoiceForm.qty" [formControl]="Qty" required>
+            <input matInput placeholder="Quantity" [(ngModel)]="invoiceForm.qty" [formControl]="Qty" required>
             <mat-error *ngIf="Qty.hasError('required')">
-                Salary is required.
+                Quantity is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <input matInput placeholder="employee address"  [(ngModel)]="invoiceForm.discount" [formControl]="Discount" required>
             <mat-error *ngIf="Discount.hasError('required')">
-                Address is required.
+                Discount is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="employee address"  [(ngModel)]="invoiceForm.Amount" [formControl]="Amount" required>
+            <input matInput placeholder="Amount"  [(ngModel)]="invoiceForm.amount" [formControl]="Amount" required>
             <mat-error *ngIf="Amount.hasError('required')">
-                Address is required.
+                Amount is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="employee address"  [(ngModel)]="invoiceForm.sgst" [formControl]="Sgst" required>
+            <input matInput placeholder="Sgst"  [(ngModel)]="invoiceForm.sgst" [formControl]="Sgst" required>
             <mat-error *ngIf="Sgst.hasError('required')">
-                Address is required.
+                Sgst is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="employee address" [(ngModel)]="invoiceForm.cgst" [formControl]="Cgst" required>
+            <input matInput placeholder="Cgst" [(ngModel)]="invoiceForm.cgst" [formControl]="Cgst" required>
             <mat-error *ngIf="Cgst.hasError('required')">
-                Address is required.
+                Cgst is required.
             </mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="employee address"  [(ngModel)]="invoiceForm.paid" [formControl]="Paid" required>
-            <mat-error *ngIf="Paid.hasError('required')">
-                Address is required.
+            <input matInput placeholder="Amount Tax"  [(ngModel)]="invoiceForm.amttax" [formControl]="Amttax" required>
+            <mat-error *ngIf="Amttax.hasError('required')">
+                Amount Tax is required.
             </mat-error>
         </mat-form-field>
 
+        <mat-form-field>
+            <input matInput placeholder="Payment Method"  [(ngModel)]="invoiceForm.paymthd" [formControl]="Paymthd" required>
+            <mat-error *ngIf="Paymthd.hasError('required')">
+                Payment Method is required.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Issue Date"  [(ngModel)]="invoiceForm.issueDate" [formControl]="IssueDate" required>
+            <mat-error *ngIf="IssueDate.hasError('required')">
+                Issue Date is required.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Due Date"  [(ngModel)]="invoiceForm.dueDate" [formControl]="DueDate" required>
+            <mat-error *ngIf="DueDate.hasError('required')">
+                Due Date is required.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Paid"  [(ngModel)]="invoiceForm.paid" [formControl]="Paid" required>
+            <mat-error *ngIf="Paid.hasError('required')">
+                Paid is required.
+            </mat-error>
+        </mat-form-field>
         <div>
         <button mat-raised-button mat-primary (click)="submit()">{{method=='edit'?'Update':'Create'}}</button>
         </div>
