@@ -2,9 +2,11 @@ let base_url = 'http://localhost:1337';
 
 export const environment = {
   production: true,
-  addNewProduct: base_url + '/invoice/add',
-  getAllProduct: base_url + '/invoice/read',
-  getProductById: base_url + '/invoice/read',
-  updateProductById: base_url + '/invoice/update',
-  deleteProductById: base_url + '/invoice/delete',
+  addNewInvoice: base_url + '/invoice/add',
+  getAllInvoice: base_url + '/invoice/read',
+  getAllVender: base_url + '/invoice/venders',
+  getVenderById: base_url + '/invoice/read',
+  updateVenderById:  base_url + '/invoice/update',
+  DeleteVenderById: base_url + '/invoice/delete',
+  getCommonData: base_url + '/invoice/readcd',
 };

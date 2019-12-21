@@ -1,10 +1,9 @@
-<!-- <h2 class="regi1"> Inventory Management System</h2> -->
 <mat-card id="navMatcard">
     <div>
        <!-- <div class="scrollbar" id="style-1">
           <div class="force-overflow"> -->
              <nav mat-tab-nav-bar>
-                <a mat-tab-link *ngFor="let routeLink of routeLinks; let i = index;" [routerLink]="routeLink.link"
+                <a  mat-tab-link *ngFor="let routeLink of routeLinks; let i = index;" [routerLink]="routeLink.link"
                    routerLinkActive="mat-tab-link-active" #rla="routerLinkActive" [active]="activeLinkIndex === i"
                    (click)="activeLinkIndex = i" [routerLinkActiveOptions]="{exact: true}">
                    {{routeLink.label}}
