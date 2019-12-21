@@ -12,18 +12,18 @@ import { InvoiceService } from 'src/app/services/invoice.service';
 export class InvoiceformComponent implements OnInit {
 
   method = 'create';
-  invoiceid = null;
+  venderid = null;
 
   invoiceForm: any = {
     id: null,
-    vendername: null,
+    venderid: null,
+    vendorname: null,
     email: null,
     phno: null,
     panno: null,
     gstno: null,
+    address: null,
 
-    issuedate: null,
-    duedate: null,
     item: null,
     price: null,
     qty: null,
@@ -31,8 +31,32 @@ export class InvoiceformComponent implements OnInit {
     amount: null,
     sgst: null,
     cgst: null,
-    paid: null,
+    amttax: null,
+    paymthd: null,
+    issuedate: null,
+    duedate: null,
+    paid: null
   }
+  
+    // VenderName: null,
+    // Email: null,
+    // Phno: null,
+    // Panno: null,
+    // Gstno: null,
+    // Address: null,
+
+    // Item: null,
+    // price: null,
+    // qty: null,
+    // discount: null,
+    // amount: null,
+    // sgst: null,
+    // cgst: null,
+    // amttax: null,
+    // paymthd: null,
+    // issuedate: null,
+    // duedate: null,
+    // paid: null
 
   VenderName = new FormControl([Validators.required]);
   Email = new FormControl([Validators.required]);
@@ -56,10 +80,10 @@ export class InvoiceformComponent implements OnInit {
         this.method = param['method'];
       }
       if (param['id']) {
-        this.invoiceid = param['id'];
+        this.venderid = null;
       }
       if (this.method == 'edit') {
-        this.getEmployeeById(this.invoiceid);
+        this.getVenderById(this.venderid = null);
       }
     })
   }
@@ -69,8 +93,8 @@ export class InvoiceformComponent implements OnInit {
 * @param id 
 * @author Amol Dhamale
 */
-  getEmployeeById(id) {
-    this.invoiceService.getProductById(id).subscribe(res => {
+getVenderById(id) {
+    this.invoiceService.getVenderById(id).subscribe(res => {
       if (!res.error) {
         this.invoiceForm = res.result;
       }
@@ -84,7 +108,7 @@ export class InvoiceformComponent implements OnInit {
       && this.Price.valid && this.Qty.valid && this.Discount.valid && this.Amount.valid && this.Sgst.valid && this.Cgst.valid && this.Paid.valid) {
       if (this.method == 'edit') {
         //update API
-        this.invoiceService.updateProductById(this.invoiceForm).subscribe(res => {
+        this.invoiceService.updateVenderById(this.invoiceForm).subscribe(res => {
           if (!res.error) {
             alert('Employee Updated Successfully');
             this.location.back();
@@ -97,7 +121,7 @@ export class InvoiceformComponent implements OnInit {
       }
       if (this.method == 'create') {
         //Create API
-        this.invoiceService.addNewProduct(this.invoiceForm).subscribe(res => {
+        this.invoiceService.addNewInvoice(this.invoiceForm).subscribe(res => {
           if (!res.error) {
             alert('Employee Created Successfully');
             this.location.back();
